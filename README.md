@@ -57,35 +57,35 @@ https://github.com/RUCAIBox/HaluEval/blob/main/data/qa_data.json
 * Model Stability: Llama 3 experienced progressive slowdowns during continuous query execution, requiring a system restart every 10 queries to maintain stable performance.
 * Token Lengths: The maximum input token count in the JSON "knowledge" field is 226 with the prompt included, and 167 without the prompt.
 * Context Length and Contradiction Trends:
-** Large Context (>256 tokens): Disabling the prompt (PROMPT OFF) results in more contradictions compared to having the prompt active (PROMPT ON), except at the 2048 token boundary.
-** Small Context (<=256 tokens): Contradictions increase as context length decreases.
-** Short Context Anomaly (128 and 256 tokens): PROMPT ON yields more contradictions than PROMPT OFF at 128 and 256 token lengths. This occurs because the added prompt pushes the total token count past the tight context limit, causing truncation and data loss. 
+* Large Context (>256 tokens): Disabling the prompt (PROMPT OFF) results in more contradictions compared to having the prompt active (PROMPT ON), except at the 2048 token boundary.
+* Small Context (<=256 tokens): Contradictions increase as context length decreases.
+* Short Context Anomaly (128 and 256 tokens): PROMPT ON yields more contradictions than PROMPT OFF at 128 and 256 token lengths. This occurs because the added prompt pushes the total token count past the tight context limit, causing truncation and data loss. 
 * Prompt Impact on Classification
-** Entailment and Neutral Shifts: Enabling the prompt (PROMPT ON) consistently drives a significant rise in entailment and a drop in neutral classifications across standard context lengths.
+* Entailment and Neutral Shifts: Enabling the prompt (PROMPT ON) consistently drives a significant rise in entailment and a drop in neutral classifications across standard context lengths.
 Temperature Profile: Temperature-based contradiction scaling was omitted from this evaluation because Llama 3 demonstrated high baseline stability and robustness.
 
 ### Deep Dive
 #### Discussion: Context Length Anomalies
 * Overview of Findings
-** Natural Language Inference (NLI) contradiction trends deviate unexpectedly at the \(N=2048\) context boundary, breaking the expected linear or predictable scaling pattern where PROMPT OFF consistently exhibits higher contradiction rates than PROMPT ON.
+* Natural Language Inference (NLI) contradiction trends deviate unexpectedly at the \(N=2048\) context boundary, breaking the expected linear or predictable scaling pattern where PROMPT OFF consistently exhibits higher contradiction rates than PROMPT ON.
 Technical Analysis of the 2048 Boundary
-** KV Cache Allocation Limits: Legacy inference runtimes and APIs enforce a hardcoded 2048-token ceiling. Testing precisely at this edge triggers silent memory reallocation or edge-case overflows in the Key-Value cache. [1]
-** Prompt Disruption: System prompt overhead consumes a disproportionate share of the 2048-token window. Minor overflows force abrupt truncation, inadvertently stripping PROMPT ON instructions and corrupting attention masks.
-** Positional Encoding Shifts: Approaching power-of-two boundaries without optimal chunk configurations disrupts Rotary Position Embedding (RoPE) scaling and native attention patterns, causing transient logical instability.
+* KV Cache Allocation Limits: Legacy inference runtimes and APIs enforce a hardcoded 2048-token ceiling. Testing precisely at this edge triggers silent memory reallocation or edge-case overflows in the Key-Value cache. [1]
+* Prompt Disruption: System prompt overhead consumes a disproportionate share of the 2048-token window. Minor overflows force abrupt truncation, inadvertently stripping PROMPT ON instructions and corrupting attention masks.
+* Positional Encoding Shifts: Approaching power-of-two boundaries without optimal chunk configurations disrupts Rotary Position Embedding (RoPE) scaling and native attention patterns, causing transient logical instability.
 * Comparative Stability at 1024 and 4096
-** 1024 Tokens: Operates safely below truncation thresholds, ensuring uniform structural handling and clean prompt processing.
-** 4096 Tokens: Leverages fully allocated KV blocks and a well-tested legacy tier standard, eliminating positional-encoding anomalies observed at tighter boundaries.
+* 1024 Tokens: Operates safely below truncation thresholds, ensuring uniform structural handling and clean prompt processing.
+* 4096 Tokens: Leverages fully allocated KV blocks and a well-tested legacy tier standard, eliminating positional-encoding anomalies observed at tighter boundaries.
 
   
 ### Future Scope & Improvements
 This project identifies key operational constraints in Llama 3 and proposes targeted areas for future research and engineering enhancements.
 
 * Performance & Reliability
-** Stateless Persistence: Eliminate execution overhead from recurring context degradation by implementing state-management or cache-reset strategies that avoid full model restarts.
-** Dynamic Context Scaling: Investigate behavioral changes at specific token thresholds (such as 2048 context length) where prompt conditioning introduces contradictions.
-** Comparative Analysis
-** Cross-Model Benchmarking: Evaluate alternative open-source LLMs to determine if similar context degradation and prompt-sensitivity patterns exist outside the Llama architecture.
-** Temperature Robustness Mapping: Isolate the mechanisms behind Llama 3's high resilience to temperature adjustments to find models matching this stability without performance degradation or high restart latency.
+* Stateless Persistence: Eliminate execution overhead from recurring context degradation by implementing state-management or cache-reset strategies that avoid full model restarts.
+* Dynamic Context Scaling: Investigate behavioral changes at specific token thresholds (such as 2048 context length) where prompt conditioning introduces contradictions.
+* Comparative Analysis
+* Cross-Model Benchmarking: Evaluate alternative open-source LLMs to determine if similar context degradation and prompt-sensitivity patterns exist outside the Llama architecture.
+* Temperature Robustness Mapping: Isolate the mechanisms behind Llama 3's high resilience to temperature adjustments to find models matching this stability without performance degradation or high restart latency.
 
 
 
