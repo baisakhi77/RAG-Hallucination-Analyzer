@@ -52,7 +52,7 @@ Click the **Open in Colab** badge above to launch and execute this Jupyter noteb
 * Overview of Findings
     * Natural Language Inference (NLI) contradiction trends deviate unexpectedly at the \(N=2048\) context boundary, breaking the expected linear or predictable scaling pattern where PROMPT OFF consistently exhibits higher contradiction rates than PROMPT ON.
 * Technical Analysis of the 2048 Boundary
-    * KV Cache Allocation Limits: Legacy inference runtimes and APIs enforce a hardcoded 2048-token ceiling. Testing precisely at this edge triggers silent memory reallocation or edge-case overflows in the Key-Value cache. [1]
+    * KV Cache Allocation Limits: Legacy inference runtimes and APIs enforce a hardcoded 2048-token ceiling. Testing precisely at this edge triggers silent memory reallocation or edge-case overflows in the Key-Value cache. 
     * Prompt Disruption: System prompt overhead consumes a disproportionate share of the 2048-token window. Minor overflows force abrupt truncation, inadvertently stripping PROMPT ON instructions and corrupting attention masks.
     * Positional Encoding Shifts: Approaching power-of-two boundaries without optimal chunk configurations disrupts Rotary Position Embedding (RoPE) scaling and native attention patterns, causing transient logical instability.
 * Comparative Stability at 1024 and 4096
