@@ -1,5 +1,6 @@
 # RAG-Hallucination-Analyzer
- An interactive RAG-powered Q&amp;A application built with Gradio and LangChain, enabling users to query custom JSON datasets using semantic search
+Llama 3 Hallucination & Parameter Optimizer
+
 
 ## Description
 
@@ -11,44 +12,28 @@ This project evaluates how hyperparameters (temperature, context length) and pro
 
 ## Dataset
 
-https://github.com/RUCAIBox/HaluEval/blob/main/data/qa_data.json
+We use the [HaluEval](https://github.com/RUCAIBox/HaluEval) benchmark for testing and evaluating model hallucinations. 
 
-## Getting Started
+<Quote bind="1.1.9">HaluEval is a large collection of generated and human-annotated hallucinated samples for evaluating the performance of LLMs in recognizing hallucination, as introduced in [HaluEval](https://github.com/RUCAIBox/HaluEval).</Quote>
 
-## Installation Steps
 
-### The required Python libraries
+## Python packages used
+* langchain
+* langchain_community
+* sentence-transformers
+* langchain_core
 
-* pip install gradio==4.44.0
-* pip install --upgrade gradio
-* pip install ibm-watsonx-ai==1.1.2
-* pip install langchain==0.2.11
-* pip install langchain-community==0.2.10
-* pip install langchain-ibm==0.1.11
-* pip install chromadb==0.4.24
-* pip install pypdf==4.3.1
-* pip install pydantic==2.9.1
-* pip install huggingface_hub==0.23.0
-* pip install gradio
-* pip install huggingface_hub
-* pip install --upgrade chromadb
-* pip install openai
-* pip install sentence-transformers
-* pip install jq
-* pip install "transformers<4.49.0"
-* pip install datasets
-* pip install "ragas==0.2.2"
-* pip install nltk
-* pip install deepeval litellm Ollama
-* pip install --force-reinstall numpy==1.26.4
+  
+## Running the Notebook
 
-### LLM installation
-!sudo apt-get update && sudo apt-get install -y zstd
-!curl -fsSL https://ollama.com/install.sh | sh
+Click the **Open in Colab** badge above to launch and execute this Jupyter notebook directly in your browser via [Google Colab](https://drive.google.com/file/d/100FNn7hbvksJYSy9wd5IiOj6lYCalN_P/view?usp=sharing). No local installation is required.
 
-### Executing program
-
-* Execute Hallucination_Project.ipynb after installing the required Python library and starting Ollama.
+### Steps:
+1. Click the **Open In Colab** button.
+2. Once the notebook opens in Google Colab, you can run individual code cells by clicking the **Play button** or pressing `Shift + Enter`.
+3. If your notebook requires a GPU (for machine learning or AI models), go to **Runtime** > **Change runtime type** in the top menu and select **T4 GPU** (or another available accelerator), then click **Save**.
+4. Before executing the notebook, mention the input JSON file path in the 'input_file_path' variable and pass the desired output file location to 'append_to_json' function in the code.
+   
 
 ## Result
 
@@ -89,21 +74,26 @@ This project identifies key operational constraints in Llama 3 and proposes targ
 
 
 
-## Authors
+### Citation
+
+@misc{HaluEval,
+  author = {Junyi Li and Xiaoxue Cheng and Wayne Xin Zhao and Jian-Yun Nie and Ji-Rong Wen },
+  title = {HaluEval: A Large-Scale Hallucination Evaluation Benchmark for Large Language Models},
+  year = {2023},
+  journal={arXiv preprint arXiv:2305.11747},
+  url={https://arxiv.org/abs/2305.11747}
+}
+### Acknowledgments
+
+* AI model inference powered locally by [Ollama](https://ollama.com/).
+* This project uses the following open-source libraries:
+  * [LangChain](https://github.com/langchain-ai/langchain) (`langchain`, `langchain_core`, `langchain_community`)
+  * [sentence-transformer](https://github.com/huggingface/sentence-transformers).
+
+
+## Contact
 
 Contributors names and contact info
 
 Baisakhi Mitra (baisakhi7.mitra7@gmail.com)
 
-
-## Version History
-
-* 0.1
-    * Initial Release [In progress]
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-** will be added
