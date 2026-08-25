@@ -59,7 +59,7 @@ Click the **Open in Colab** badge above to launch and execute this Jupyter noteb
 * Technical Analysis of the 2048 Boundary
     * KV Cache Allocation Limits: Legacy inference runtimes and APIs enforce a hardcoded 2048-token ceiling. Testing precisely at this edge triggers silent memory reallocation or edge-case overflows in the Key-Value cache. 
     * Prompt Disruption: System prompt overhead consumes a disproportionate share of the 2048-token window. Minor overflows force abrupt truncation, inadvertently stripping PROMPT ON instructions and corrupting attention masks.
-    * Positional Encoding Shifts: Approaching power-of-two boundaries without optimal chunk configurations disrupts Rotary Position Embedding (RoPE) scaling and native attention patterns, causing transient logical instability.
+
 * Comparative Stability at 1024 and 4096
     * 1024 Tokens: Operates safely below truncation thresholds, ensuring uniform structural handling and clean prompt processing.
     * 4096 Tokens: Leverages fully allocated KV blocks and a well-tested legacy tier standard, eliminating positional-encoding anomalies observed at tighter boundaries.
