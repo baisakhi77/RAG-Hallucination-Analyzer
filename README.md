@@ -41,7 +41,7 @@ Click the **Open in Colab** badge above to launch and execute this Jupyter noteb
 ## Result
 
 ### Overview and Execution Performance
-* Speed: Execution time scales linearly with context length (llama3 'num_ctx' hyperparameter). Halving the context length cuts execution time in half.
+* Speed: Execution time scales linearly with context length (Llama3 'num_ctx' hyperparameter). Halving the context length cuts execution time in half.
 * Model Stability: Llama 3 experienced progressive slowdowns during continuous query execution, requiring a system restart every 10 queries to maintain stable performance.
 * Token Lengths: The maximum input token count in the JSON "knowledge" field is 226 with the prompt included, and 167 without the prompt.
   * Context Length and Contradiction Trends:
