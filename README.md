@@ -23,7 +23,9 @@ We use the [HaluEval](https://github.com/RUCAIBox/HaluEval) benchmark for testin
 * langchain_community
 * sentence-transformers
 * langchain_core
-
+* jq
+* numpy
+* chromadb
   
 ## Running the Notebook
 
@@ -90,6 +92,11 @@ This project identifies key operational constraints in Llama 3 and proposes targ
 * This project uses the following open-source libraries:
   * [LangChain](https://github.com/langchain-ai/langchain) (`langchain`, `langchain_core`, `langchain_community`)
   * [sentence-transformer](https://github.com/huggingface/sentence-transformers).
+  * [ChromaDB] (https://github.com/chroma-core/chroma)
+  * [jq] (https://github.com/jqlang/jq)
+  * [numpy] (https://github.com/numpy/numpy)
+
+
 
 
 ## Contact
