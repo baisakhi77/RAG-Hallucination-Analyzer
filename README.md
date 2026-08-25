@@ -44,8 +44,8 @@ Click the **Open in Colab** badge above to launch and execute this Jupyter noteb
     * Small Context (<=256 tokens): Contradictions increase as context length decreases.
     * Short Context Anomaly (128 and 256 tokens): PROMPT ON yields more contradictions than PROMPT OFF at 128 and 256 token lengths. This occurs because the added prompt pushes the total token count past the tight context limit, causing truncation and data loss. 
 * Prompt Impact on Classification
-* Entailment and Neutral Shifts: Enabling the prompt (PROMPT ON) consistently drives a significant rise in entailment and a drop in neutral classifications across standard context lengths.
-Temperature Profile: Temperature-based contradiction scaling was omitted from this evaluation because Llama 3 demonstrated high baseline stability and robustness.
+    * Entailment and Neutral Shifts: Enabling the prompt (PROMPT ON) consistently drives a significant rise in entailment and a drop in neutral classifications across standard context lengths.
+* Temperature Profile: Temperature-based contradiction scaling was omitted from this evaluation because Llama 3 demonstrated high baseline stability and robustness.
 
 ### Deep Dive
 #### Discussion: Context Length Anomalies
