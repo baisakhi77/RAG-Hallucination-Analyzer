@@ -6,7 +6,10 @@
 A toolkit to analyze and minimize AI hallucinations in Retrieval-Augmented Generation (RAG) pipelines using Llama 3 and Sentence Transformers.
 
 ### Overview
-This project evaluates how hyperparameters (temperature, context length) and prompt structures impact factual accuracy in Llama 3 outputs. It utilizes a CrossEncoder model to score generated answers against ground truth, identifying optimal configurations to reduce hallucinations.
+This project evaluates how hyperparameters (temperature, context length) and prompt structures impact factual accuracy in Llama 3 outputs. It utilizes NLI (Natural Language Inference) cross-encoder model to score generated answers against ground truth, identifying optimal configurations to reduce hallucinations. It evaluates Llama3 performance based on three NLI labels:
+  * Entailment: The hypothesis is definitely true if the premise is true.
+  * Contradiction: The hypothesis is definitely false if the premise is true; the two statements cannot both be true at the same time.
+  * Neutral: The hypothesis might be true or false based on the premise, but there is not enough information to prove or disprove it definitively.
 
 ## Dataset
 
