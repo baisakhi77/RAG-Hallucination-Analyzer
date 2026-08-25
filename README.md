@@ -1,6 +1,4 @@
 # RAG-Hallucination-Analyzer
-Llama 3 Hallucination & Parameter Optimizer
-
 
 ## Description
 
