@@ -13,7 +13,7 @@ This project evaluates how hyperparameters (temperature, context length) and pro
 
 ## Dataset
 
-We use the [HaluEval](https://github.com/RUCAIBox/HaluEval) benchmark for testing and evaluating model hallucinations. A small subset of HaluEval dataset ([qa_data_chatbot.json](https://github.com/baisakhi77/gradio-langchain-json-rag/blob/main/qa_data_chatbot.json) ) is used for testing the application. 
+We use the [HaluEval](https://github.com/RUCAIBox/HaluEval) benchmark for testing and evaluating model hallucinations. A small subset of HaluEval dataset ([qa_data_test_Final_50.json](https://github.com/baisakhi77/RAG-Hallucination-Analyzer/blob/main/qa_data_test_Final_50.json) ) is used for testing the application. 
 
 
 <Quote bind="1.1.9">HaluEval is a large collection of generated and human-annotated hallucinated samples for evaluating the performance of LLMs in recognizing hallucination, as introduced in [HaluEval](https://github.com/RUCAIBox/HaluEval).</Quote>
