@@ -13,7 +13,8 @@ This project evaluates how hyperparameters (temperature, context length) and pro
 
 ## Dataset
 
-We use the [HaluEval](https://github.com/RUCAIBox/HaluEval) benchmark for testing and evaluating model hallucinations. 
+We use the [HaluEval](https://github.com/RUCAIBox/HaluEval) benchmark for testing and evaluating model hallucinations. A small subset of HaluEval dataset ([qa_data_chatbot.json](https://github.com/baisakhi77/gradio-langchain-json-rag/blob/main/qa_data_chatbot.json) ) is used for testing the application. 
+
 
 <Quote bind="1.1.9">HaluEval is a large collection of generated and human-annotated hallucinated samples for evaluating the performance of LLMs in recognizing hallucination, as introduced in [HaluEval](https://github.com/RUCAIBox/HaluEval).</Quote>
 
@@ -26,16 +27,20 @@ We use the [HaluEval](https://github.com/RUCAIBox/HaluEval) benchmark for testin
 * jq
 * numpy
 * chromadb
-  
+
+## Additional requirement
+ * Download Ollama from [Ollama](https://ollama.com/download) and setup in local.
+ * Keep Ollama running while executing the application.
+   
 ## Running the Notebook
 
 Click the **Open in Colab** badge above to launch and execute this Jupyter notebook directly in your browser via [Google Colab](https://drive.google.com/file/d/100FNn7hbvksJYSy9wd5IiOj6lYCalN_P/view?usp=sharing). No local installation is required.
 
 ### Steps:
 1. Click the **Open In Colab** button.
-2. Once the notebook opens in Google Colab, you can run individual code cells by clicking the **Play button** or pressing `Shift + Enter`.
-3. If your notebook requires a GPU (for machine learning or AI models), go to **Runtime** > **Change runtime type** in the top menu and select **T4 GPU** (or another available accelerator), then click **Save**.
-4. Before executing the notebook, mention the input JSON file path in the 'input_file_path' variable and pass the desired output file location to 'append_to_json' function in the code.
+3. Once the notebook opens in Google Colab, you can run individual code cells by clicking the **Play button** or pressing `Shift + Enter`.
+4. If your notebook requires a GPU (for machine learning or AI models), go to **Runtime** > **Change runtime type** in the top menu and select **T4 GPU** (or another available accelerator), then click **Save**.
+5. Before executing the notebook, mention the input JSON file path in the 'input_file_path' variable and pass the desired output file location to 'append_to_json' function in the code.
    
 
 ## Result
